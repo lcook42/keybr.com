@@ -58,6 +58,6 @@ export class CustomTextLesson extends Lesson {
     if (lowercase) {
       text = this.model.language.lowerCase(text);
     }
-    return text;
+    return text.split(" ");
   }
 }
