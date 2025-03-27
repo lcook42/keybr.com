@@ -31,11 +31,11 @@ export class CustomTextLesson extends Lesson {
     const fragment = generateFragment(this.settings, this.#makeWordGenerator(rng));
     const maxLength = this.wordList.length;
     if (this.wordIndex >= maxLength) {
-        return [];
+        return "";
     }
     const slicedFragment = this.wordList.slice(this.wordIndex, maxLength);
     this.wordIndex = maxLength; // Ensure no further generation
-    return slicedFragment;
+    return slicedFragment.join(" ");
 }
 
   #makeWordGenerator(rng: RNGStream) {
