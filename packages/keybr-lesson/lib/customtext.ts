@@ -30,7 +30,7 @@ export class CustomTextLesson extends Lesson {
   override generate(lessonKeys: LessonKeys, rng: RNGStream) {
     const fragment = generateFragment(this.settings, this.#makeWordGenerator(rng));
     const maxLength = this.wordList.length;
-    return this.wordIndex < maxLength ? fragment :
+    return this.wordIndex < maxLength ? fragment : '';  
   }
 
   #makeWordGenerator(rng: RNGStream) {
