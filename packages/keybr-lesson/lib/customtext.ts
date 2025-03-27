@@ -31,12 +31,12 @@ export class CustomTextLesson extends Lesson {
     const fragment = generateFragment(this.settings, this.#makeWordGenerator(rng));
     const maxLength = this.wordList.length;
     if (this.wordIndex >= maxLength) {
-      return [];
+        return [];
     }
-    const fragment = this.wordList.slice(this.wordIndex, maxLength);
+    const slicedFragment = this.wordList.slice(this.wordIndex, maxLength);
     this.wordIndex = maxLength; // Ensure no further generation
-    return fragment;
-  }
+    return slicedFragment;
+}
 
   #makeWordGenerator(rng: RNGStream) {
     const randomize = this.settings.get(lessonProps.customText.randomize);
