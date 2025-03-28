@@ -28,17 +28,14 @@ export class CustomTextLesson extends Lesson {
   }
 
   override generate(lessonKeys: LessonKeys, rng: RNGStream) {
-    const fragment = generateFragment(this.settings, this.#makeWordGenerator(rng));
     const maxLength = this.wordList.length;
     if (this.wordIndex >= maxLength) {
         return "";
     }
     const remainingLength = maxLength - this.wordIndex;
-    const fragmentLength = fragment.length;
-    const sliceLength = Math.min(fragmentLength, remainingLength)
-    const slicedFragment = this.wordList.slice(this.wordIndex, this.wordIndex + sliceLength);
-    this.wordIndex += sliceLength; // Update wordIndex to the next position
-    return slicedFragment.join(" ");
+    const fragment = this.wordList.slice(this.wordIndex, this.wordIndex + remainingLength);
+    this.wordIndex += remainingLength; // Update wordIndex to the next position
+    return fragment.join(" ");
 }
 
   #makeWordGenerator(rng: RNGStream) {
