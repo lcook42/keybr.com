@@ -33,8 +33,11 @@ export class CustomTextLesson extends Lesson {
     if (this.wordIndex >= maxLength) {
         return "";
     }
-    const slicedFragment = this.wordList.slice(this.wordIndex, maxLength);
-    this.wordIndex = maxLength; // Ensure no further generation
+    const remainingLength = maxLength - this.wordIndex;
+    const fragmentLength = fragment.length;
+    const sliceLength = Math.min(fragmentLength, remainingLength)
+    const slicedFragment = this.wordList.slice(this.wordIndex, this.wordIndex + sliceLength);
+    this.wordIndex += sliceLength; // Update wordIndex to the next position
     return slicedFragment.join(" ");
 }
 
