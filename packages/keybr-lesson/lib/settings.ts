@@ -41,11 +41,14 @@ export const lessonProps = {
     content: stringProp(
       "lesson.customText.content",
       "The quick brown fox jumps over the lazy dog.",
-      { maxLength: 10_000 },
+      { maxLength: 100_000 },
     ),
-    lettersOnly: booleanProp("lesson.customText.lettersOnly", true),
-    lowercase: booleanProp("lesson.customText.lowercase", true),
+    lettersOnly: booleanProp("lesson.customText.lettersOnly", false), // changed from true to false
+    lowercase: booleanProp("lesson.customText.lowercase", false), // changed from true to false
     randomize: booleanProp("lesson.customText.randomize", false),
+    addWords: numberProp("lesson.customText.addWords", 1000, { min: 10, max: 1000 }), // added this line to set addWords to maximum value
+    stopOnError: booleanProp("lesson.customText.stopOnError", false), // added this line to set stopOnError to false
+    forgiveErrors: booleanProp("lesson.customText.forgiveErrors", false), // added this line to set forgiveErrors to false
   } as const,
   numbers: {
     benford: booleanProp("lesson.numbers.benford", true),
