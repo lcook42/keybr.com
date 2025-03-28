@@ -157,7 +157,11 @@ describe("generate text using settings", () => {
 
 
 test("generate text with maximum length equal to custom text inputted", () => {
-  const settings = new Settings().set(lessonProps.customText.content, "Twisting and slashing, he fought his way through the pack and backed up under the low branches of a hedge. Growling and snarling, they formed a halfmoon circle around him. A big bird dog, bolder than the others, darted in. The hedge shook as he tangled with the hound. He came out so fast he fell over backwards. I saw that his right ear was split wide open. It was too much for him and he took off down the street, squalling like a scalded cat.");
+  const settings = new Settings()
+    .set(lessonProps.customText.content, "Twisting and slashing, he fought his way through the pack and backed up under the low branches of a hedge. Growling and snarling, they formed a halfmoon circle around him. A big bird dog, bolder than the others, darted in. The hedge shook as he tangled with the hound. He came out so fast he fell over backwards. I saw that his right ear was split wide open. It was too much for him and he took off down the street, squalling like a scalded cat.");
+    .set(lessonProps.customText.lowercase, false)
+    .set(lessonProps.customText.lettersOnly, false)
+    .set(lessonProps.customText.randomize, false);
   const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel();
   const lesson = new CustomTextLesson(settings, keyboard, model);
@@ -170,7 +174,11 @@ test("generate text with maximum length equal to custom text inputted", () => {
 });
 
 test("generate text without looping once completed", () => {
-  const settings = new Settings().set(lessonProps.customText.content, "Twisting and slashing, he fought his way through the pack and backed up under the low branches of a hedge. Growling and snarling, they formed a halfmoon circle around him. A big bird dog, bolder than the others, darted in. The hedge shook as he tangled with the hound. He came out so fast he fell over backwards. I saw that his right ear was split wide open. It was too much for him and he took off down the street, squalling like a scalded cat.");
+  const settings = new Settings()
+    .set(lessonProps.customText.content, "Twisting and slashing, he fought his way through the pack and backed up under the low branches of a hedge. Growling and snarling, they formed a halfmoon circle around him. A big bird dog, bolder than the others, darted in. The hedge shook as he tangled with the hound. He came out so fast he fell over backwards. I saw that his right ear was split wide open. It was too much for him and he took off down the street, squalling like a scalded cat.");
+    .set(lessonProps.customText.lowercase, false)
+    .set(lessonProps.customText.lettersOnly, false)
+    .set(lessonProps.customText.randomize, false); 
   const keyboard = loadKeyboard(Layout.EN_US);
   const model = new FakePhoneticModel();
   const lesson = new CustomTextLesson(settings, keyboard, model);
