@@ -32,20 +32,13 @@ export class CustomTextLesson extends Lesson {
     if (this.wordIndex >= maxLength) {
         return "";
     }
+    
     const remainingLength = maxLength - this.wordIndex;
     const fragment = this.wordList.slice(this.wordIndex, this.wordIndex + remainingLength);
     this.wordIndex += remainingLength; // Update wordIndex to the next position
     return fragment.join(" ");
 }
 
-  #makeWordGenerator(rng: RNGStream) {
-    const randomize = this.settings.get(lessonProps.customText.randomize);
-    if (randomize && this.wordList.length > 0) {
-      return uniqueWords(randomWords(this.wordList, rng));
-    } else {
-      return wordSequence(this.wordList, this);
-    }
-  }
 
   #getWordList() {
     const content = this.settings.get(lessonProps.customText.content);
